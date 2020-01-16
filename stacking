@@ -1,0 +1,14 @@
+# define model for stacking
+models = [voting_models, bag_knn, bag_dt, ada, gb, xgboost]
+S_train, S_test = stacking(models,
+                           X_train, y_train, X_test,
+                           regression=False,
+                           mode='oof_pred_bag',
+                           needs_proba=False,
+                           save_dir=None,
+                           metric=metrics.accuracy_score,
+                           n_folds=4,
+                           stratified=True,
+                           shuffle=True,
+                           random_state=0,
+                           verbose=2)
